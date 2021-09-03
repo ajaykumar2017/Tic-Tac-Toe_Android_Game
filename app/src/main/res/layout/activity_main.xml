@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".MainActivity"
     >
   <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,8 +15,9 @@
         android:id="@+id/text_view_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SCORE BOARD"
+        android:text="@string/score_board"
         android:textSize="30sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -23,8 +25,9 @@
         android:id="@+id/text_view_p1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Player 1: 0"
+        android:text="@string/player_1_0"
         android:textSize="30sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_title"/>
@@ -34,7 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
-        android:text="Player 2: 0"
+        android:text="@string/player_2_0"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -43,52 +47,70 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center">
-    <Button
+    <ImageButton
         android:id="@+id/btn00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
+    <ImageButton
         android:id="@+id/btn01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
+    <ImageButton
         android:id="@+id/btn02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
   </LinearLayout>
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center">
-    <Button
+    <ImageButton
         android:id="@+id/btn10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
+    <ImageButton
         android:id="@+id/btn11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
+    <ImageButton
         android:id="@+id/btn12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
   </LinearLayout>
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center">
-    <Button
+    <ImageButton
         android:id="@+id/btn20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
+    <ImageButton
         android:id="@+id/btn21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
+    <ImageButton
         android:id="@+id/btn22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="@dimen/square_btn_size"
+        android:layout_height="@dimen/square_btn_size"
+        android:layout_margin="@dimen/btn_margin"
+        android:background="@drawable/custom_button"/>
   </LinearLayout>
   <RelativeLayout
       android:layout_width="match_parent"
@@ -100,7 +122,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Reset Game"
+        android:background="@android:color/background_light"
+        android:paddingHorizontal="@dimen/btn_padding"
+        android:text="@string/reset_game"
+        android:textStyle="bold"
         />
   </RelativeLayout>
 

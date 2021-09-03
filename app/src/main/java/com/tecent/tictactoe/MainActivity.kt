@@ -1,13 +1,16 @@
 package com.tecent.tictactoe
 
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 
 class MainActivity : AppCompatActivity() {
-  lateinit var buttons: Array<Array<Button>>
+  lateinit var buttons: Array<Array<ImageButton>>
   lateinit var textViewPlayer1: TextView
   lateinit var textViewPlayer2: TextView
 
@@ -38,8 +41,8 @@ class MainActivity : AppCompatActivity() {
     }
   }
 
-  private fun initButton(r: Int, c: Int): Button {
-    val btn: Button =
+  private fun initButton(r: Int, c: Int): ImageButton {
+    val btn: ImageButton =
       findViewById(resources.getIdentifier("btn$r$c", "id", packageName))
     btn.setOnClickListener{
       onBtnClick(btn)
@@ -47,12 +50,12 @@ class MainActivity : AppCompatActivity() {
     return btn
   }
 
-  private fun onBtnClick(btn: Button) {
-    if(btn.text != "") return
+  private fun onBtnClick(btn: ImageButton) {
+    if(btn.drawable != null) return
     if(player1Turn){
-      btn.text = "X"
+      btn.setImageResource(R.drawable.close)
     }else{
-      btn.text = "O"
+      btn.setImageResource(R.drawable.heart)
     }
     roundCount++
 
@@ -68,14 +71,14 @@ class MainActivity : AppCompatActivity() {
   private fun checkForWin(): Boolean {
     val fields = Array(3){r->
       Array(3){c->
-        buttons[r][c].text
+        getField(buttons[r][c])
       }
     }
 
     for(i in 0..2){
       if((fields[i][0] == fields[i][1])&&
         (fields[i][0] == fields[i][2])&&
-        (fields[i][0] != "")
+        (fields[i][0] != null)
       )return true
     }
 
@@ -83,24 +86,36 @@ class MainActivity : AppCompatActivity() {
       if(
         (fields[0][i] == fields[1][i])&&
         (fields[0][i] == fields[2][i])&&
-        (fields[0][i] != "")
+        (fields[0][i] != null)
       )return true
     }
 
     if(
       (fields[0][0] == fields[1][1])&&
       (fields[0][0] == fields[2][2])&&
-      (fields[0][0] != "")
+      (fields[0][0] != null)
     ) return true
 
     if(
       (fields[0][2] == fields[1][1])&&
       (fields[0][2] == fields[2][0])&&
-      (fields[0][2] != "")
+      (fields[0][2] != null)
     ) return true
 
     return false
 
+  }
+
+  private fun getField(btn: ImageButton): Char? {
+    val drw: Drawable? = btn.drawable
+    val drwCross: Drawable? = ResourcesCompat.getDrawable(resources, R.drawable.close, null)
+    val drwHeart: Drawable? = ResourcesCompat.getDrawable(resources, R.drawable.heart, null)
+
+    return when(drw?.constantState){
+      drwCross?.constantState -> 'x'
+      drwHeart?.constantState -> 'o'
+      else -> null
+    }
   }
 
   private fun win(player:Int){
@@ -124,7 +139,7 @@ class MainActivity : AppCompatActivity() {
   private fun clearBoard() {
     for (i in 0..2){
       for(j in 0..2){
-        buttons[i][j].text = ""
+        buttons[i][j].setImageResource(0)
       }
     }
     roundCount = 0
